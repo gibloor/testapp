@@ -18,7 +18,7 @@ export default function ArraySet(props) {
   return (
     <div className={style.block}>
       <h3>
-        setA
+        Array
       </h3>
       <div className={style.array}>
         {array.map((number, index) => (

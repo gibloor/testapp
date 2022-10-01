@@ -9,7 +9,7 @@ import style from './index.module.css';
 
 export default function Home() {
 
-  const [algorithm, setAlgorithm] = useState('');
+  const [algorithm, setAlgorithm] = useState('')
 
   const switchers = [
     'union',
@@ -17,9 +17,9 @@ export default function Home() {
     'difference'
   ]
 
-  const [arrays, setArrays] = useState([]);
+  const [arrays, setArrays] = useState([])
 
-  const [firstArray, setFirstArray] = useState([1, -2, 5, 10]);
+  const [firstArray, setFirstArray] = useState([1, -2, 5, 10])
   const [secondArray, setSecondArray] = useState([1, 10, -7, 10, 5])
  
   useEffect(() => {
@@ -51,25 +51,21 @@ export default function Home() {
   }
 
   const deleteInFirstArray = (index) => {
-    let newArray = firstArray;
+    let newArray = firstArray
     newArray.splice(index, 1)
     setFirstArray([...newArray])
   }
 
   const deleteInSecondArray = (index) => {
-    let newArray = secondArray;
+    let newArray = secondArray
     newArray.splice(index, 1)
     setSecondArray([...newArray])
   }
 
   const saveState = () => {
-    localStorage.setItem('state', JSON.stringify({firstArray, secondArray, algorithm}));
+    
   }
 
-  useEffect(() => {
-    const oldState = localStorage.getItem('state');
-    console.log(oldState)
-  }, [])
 
   return (
     <div className={style.container}>
@@ -80,7 +76,7 @@ export default function Home() {
       <div className={style.box}>
         <div className={style.block}>
           <h3>
-            algorithm: {algorithm}
+            Algorithm: {algorithm}
           </h3>
           <div className={style.array}>
             {arrays.map(number => {
@@ -93,13 +89,23 @@ export default function Home() {
             <form>
               {switchers.map(switcher => (
                 <label key={switcher} htmlFor={switcher} className={style.switcher}>
+
                   {switcher}
-                  <input id={switcher} name='switcher' type='radio' value={switcher} onChange={() => setAlgorithm(switcher)} />
+
+                  <input
+                    id={switcher}
+                    name='switcher'
+                    type='radio'
+                    value={switcher}
+                    onChange={() => setAlgorithm(switcher)}
+                  />
                 </label>
               ))}
             </form>
           </div>
-          <button onClick={() => {saveState()}}>save state</button>
+          <button onClick={() => {saveState()}}>
+            Save state
+          </button>
         </div>
       </div>
     </div>
