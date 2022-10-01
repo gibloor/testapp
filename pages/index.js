@@ -1,82 +1,11 @@
 import { useEffect, useState } from 'react';
+
 import ArraySet from './arraySet';
+import union from './algorithms/union';
+import intersection from './algorithms/intersection';
+import difference from './algorithms/difference';
 
 import style from './index.module.css';
-
-const bigSet = (array) => {
-  const object1 = {}
-
-  array.map(number => {
-    if (!object1[number]) {
-      object1[number] = 1
-    } else {
-      object1[number] += 1
-    }
-  })
-
-  const newArray = []
-
-  for (let key in object1) {
-    newArray.push(key)
-  }
-
-  return newArray
-}
-
-const union = (arrayOne, arraySecond) => {
-  return bigSet([...arrayOne, ...arraySecond])
-}
-
-const intersection = (firstArray, secondArray) => {
-
-  const container = {}
-
-  firstArray.map(number => {
-    container[number] = 1
-  })
-
-  secondArray.map(number => {
-    if (container[number]) {
-      container[number] = 2
-    }
-  })
-
-  const newArray = []
-
-  for (let key in container) {
-    if (container[key] === 2) {
-      newArray.push(key)
-    }
-  }
-
-  return newArray
-}
-
-const difference = (firstArray, secondArray) => {
-  const container = {}
-
-  firstArray.map(number => {
-    container[number] = 1
-  })
-
-  secondArray.map(number => {
-    if (container[number]) {
-      container[number] = 2
-    } else {
-      container[number] = 1
-    }
-  })
-
-  const newArray = []
-
-  for (let key in container) {
-    if (container[key] === 1) {
-      newArray.push(key)
-    }
-  }
-
-  return newArray
-}
 
 export default function Home() {
 
@@ -133,6 +62,15 @@ export default function Home() {
     setSecondArray([...newArray])
   }
 
+  const saveState = () => {
+    localStorage.setItem('state', JSON.stringify({firstArray, secondArray, algorithm}));
+  }
+
+  useEffect(() => {
+    const oldState = localStorage.getItem('state');
+    console.log(oldState)
+  }, [])
+
   return (
     <div className={style.container}>
       <div className={style.box}>
@@ -161,6 +99,8 @@ export default function Home() {
               ))}
             </form>
           </div>
+
+          <button onClick={() => {saveState()}}>save state</button>
         </div>
       </div>
     </div>
