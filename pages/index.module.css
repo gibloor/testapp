@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   height: 100vh;
+  color: white;
 }
 
 .box {
@@ -11,7 +12,7 @@
 .block {
   width: 300px;
   height: 300px;
-  border: 1px solid black;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,14 +20,21 @@
 }
 
 .number {
-  border: 1px solid green;
+  border: 1px solid white;
   margin-left: 5px;
+  padding: 5px;
 }
 
 .array {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .switcher {
-  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.switcher {
+  margin: 10px;
 }

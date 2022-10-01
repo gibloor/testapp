@@ -89,17 +89,16 @@ export default function Home() {
               </div>
             })}
           </div>
-          <div className={style.switcher}>
+          <div className={style.switchers}>
             <form>
               {switchers.map(switcher => (
-                <label key={switcher} htmlFor={switcher}>
+                <label key={switcher} htmlFor={switcher} className={style.switcher}>
                   {switcher}
                   <input id={switcher} name='switcher' type='radio' value={switcher} onChange={() => setAlgorithm(switcher)} />
                 </label>
               ))}
             </form>
           </div>
-
           <button onClick={() => {saveState()}}>save state</button>
         </div>
       </div>
