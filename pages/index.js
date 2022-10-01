@@ -62,8 +62,17 @@ export default function Home() {
     setSecondArray([...newArray])
   }
 
-  const saveState = () => {
-    
+  const saveState = async () => {
+    const response = await fetch('/api/saveStateOnBack', {
+      method: 'POST',
+      body: JSON.stringify({data: {firstArray, secondArray, algorithm}}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    const data = await response.json()
+    console.log(data)
   }
 
 

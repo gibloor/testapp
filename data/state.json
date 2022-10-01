@@ -1,0 +1,16 @@
+{
+    "firstArray": [
+        1,
+        -2,
+        5,
+        10
+    ],
+    "secondArray": [
+        1,
+        10,
+        -7,
+        10,
+        5
+    ],
+    "algorithm": "union"
+}
